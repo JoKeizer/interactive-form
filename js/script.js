@@ -26,13 +26,46 @@ function checkLabel(label) {
     }
 }
 
+/*
+    On design selection show available colors
+ */
+const design = document.querySelector('#design');
+const color = document.getElementById('color');
 
+// Hide the colors
 
+for (let i = 0; i < color.children.length; i++) {
+    color.children[i].style.display = 'none';
+}
 
+design.addEventListener('change', (e) => {
+    if (e.target.value === 'js puns') {
+        color.selectedIndex = 1;
+        for (let i = 0; i < color.children.length; i++) {
+            if (color.children[i].index <=3) {
+                color.children[0].style.display = 'none'; //first item Please Select a Theme
+                color.children[i].style.display = 'none';
 
-// Hide the “Select Theme” `option` element in the “Design” menu.
-// ● Update the “Color” field to read “Please select a T-shirt theme”.
-// ● Hide the colors in the “Color” drop down menu.
-// ● NOTE: Be sure to check out the helpful links in the second section of this Study Guide if
-//     you’re unsure of how to accomplish these steps.
+            } else {
+                color.children[i].style.display = 'block';
+            }
+        }
+
+    } else if (e.target.value === 'heart js') {
+        color.selectedIndex = 4;
+        for (let i = 0; i < color.children.length; i++) {
+            if (color.children[i].index >= 4) {
+                color.children[0].style.display = 'none';  //first item Please Select a Theme
+                color.children[i].style.display = 'none';
+            } else {
+                color.children[i].style.display = 'block';
+            }
+        }
+    }
+    else {
+        for (let i = 0; i < color.children.length; i++) {
+                color.children[i].style.display = 'block';
+        }
+    }
+});
 
