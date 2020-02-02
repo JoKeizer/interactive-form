@@ -18,7 +18,7 @@
               
       <fieldset>         
         <legend>Basic Info</legend>
-        
+
         <label for="name">Name:</label>
         <input type="text" id="name" name="user-name">
         
@@ -26,13 +26,15 @@
         <input type="email" id="mail" name="user-email">
         
         <label for="title">Job Role</label>
-        <select id="title" name="user-title">
+        <select id="title" name="user-title" onchange="checkLabel(this);" >
           <option value="full-stack js developer">Full Stack JavaScript Developer</option>
           <option value="front-end developer">Front End Developer</option>
           <option value="back-end developer">Back End Developer</option>
           <option value="designer">Designer</option>          
           <option value="student">Student</option>
-          <option value="other">Other</option>  
+          <option value="other">Other</option>
+          <input type="text" id="other-title" name="job_role_other">
+
         </select>           
       </fieldset>
       
