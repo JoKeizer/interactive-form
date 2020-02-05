@@ -69,3 +69,84 @@ design.addEventListener('change', (e) => {
     }
 });
 
+const checkboxes = document.querySelectorAll('.activities input');
+const checkboxesList = document.querySelector('.activities');
+
+/*
+    Register for Activities checkboxes
+ */
+
+// create div for total cost
+let totalCost = 0;
+const costDiv =  document.createElement('div');
+costDiv.className = 'total';
+costDiv.textContent = 'Total $ ' + totalCost;
+
+checkboxesList.appendChild(costDiv);
+
+const costEvent = document.querySelector('.total');
+
+checkboxesList.addEventListener('change', (e) => {
+    const clicked = e.target;
+    const clickedTypeDate = clicked.getAttribute('data-day-and-time');
+    const clickedTypeCost = clicked.getAttribute('data-cost');
+
+    if(clicked.checked) {
+        totalCost = totalCost + parseInt(clickedTypeCost, 10);
+        costEvent.textContent = 'Total $ ' + totalCost;
+        // document.querySelector('#error-checkbox').style.display='block';
+    } else if(clicked.checked !== true) {
+        totalCost = totalCost - parseInt(clickedTypeCost, 10);
+        costEvent.textContent = 'Total $ ' + totalCost;
+    }
+
+    //loop over all checkbox input fields
+    for (let i = 0; i < checkboxes.length; i++) {
+        //get the date and time on click event
+        const checkboxType = checkboxes[i].getAttribute('data-day-and-time');
+
+        //if the date and time are equal the event is disabled
+        if (clickedTypeDate === checkboxType && clicked !== checkboxes[i]) {
+            if (clicked.checked) {
+                checkboxes[i].disabled = true;
+            } else {
+                checkboxes[i].disabled = false;
+            }
+        }
+    }
+
+});
+
+
+//checkbox activities
+document.querySelector('.activities').addEventListener('change', (e) => {
+    // for (let i = 0; i < checkboxes.length; i++) {
+    //     const clicked = e.target;
+    //     const clickedTypeDate = clicked.getAttribute('data-day-and-time');
+    //     const clickedTypeCost = clicked.getAttribute('data-cost');
+    //
+    //     if(clicked.checked) {
+    //         totalCost = totalCost + parseInt(clickedTypeCost, 10);
+    //         costEvent.textContent = 'Total $ ' + totalCost;
+    //         console.log('totalCost',totalCost);
+    //         // document.querySelector('#error-checkbox').style.display='block';
+    //     } else if(clicked.checked !== true) {
+    //         console.log("running")
+    //         totalCost = totalCost - parseInt(clickedTypeCost, 10);
+    //         costEvent.textContent = 'Total $ ' + totalCost;
+    //     }
+    //
+    //     //get the date and time on click event
+    //     const checkboxType = checkboxes[i].getAttribute('data-day-and-time');
+    //
+    //     //if the date and time are equal the event is disabled
+    //     if (clickedTypeDate === checkboxType && clicked !== checkboxes[i]) {
+    //         if (clicked.checked) {
+    //             checkboxes[i].disabled = true;
+    //         } else {
+    //             checkboxes[i].disabled = false;
+    //         }
+    //     }
+    // }
+});
+
