@@ -15,10 +15,13 @@ button {
 }
 
 body {
-  font: 1em/1.5;
-  color: rgba(6, 49, 68, 0.9);
-	background: #CDE0FB;
+	font: 1em/1.5;
+	color: rgba(255, 255, 255, 0.9);
+	background: #efc5da;
+
 }
+
+
 
 header {
 	text-align: center;  
@@ -28,6 +31,21 @@ h1 {
 	font-size: 2.5em;
 	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.85);
 	margin: 0;
+	opacity: 0;
+
+	animation: dropDown 0.3s ease-in-out 1s forwards;
+
+}
+
+@keyframes dropDown {
+	from {
+		opacity: 0;
+		transform: translateY(-50%);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 
 a {
@@ -40,8 +58,9 @@ a {
 
 form {
 	padding: .875em 1.875em 1.875em;
-	background: #9BBEEF;
-	border: 2px solid rgba(8, 63, 87, 0.6);
+	background: white;
+	color: black;
+	border: 2px solid rgba(255, 14, 170, 0.6);
 	border-radius: 3px;
 }
 
@@ -56,6 +75,21 @@ form {
 }
 
 #error-checkbox {
+	color: red;
+	font-size: 14px;
+}
+
+#error-creditcard {
+	color: red;
+	font-size: 14px;
+}
+
+#error-zip {
+	color: red;
+	font-size: 14px;
+}
+
+#error-cvv {
 	color: red;
 	font-size: 14px;
 }
@@ -79,7 +113,7 @@ button {
 legend {
 	font-weight: bold;
 	padding-top: .5em;
-	border-top: 2px solid rgba(8, 63, 87, 0.6);
+	border-top: 2px solid rgb(220, 111, 156);
 	margin-bottom: 1.125em;
 }
 
@@ -104,16 +138,23 @@ input {
 	font-size: 1em;
 	font-weight: 500;
 	padding: .8em;
-	background: #e9f6fb;
-	border: 2px solid rgb(111, 157, 220);
+	background: #efc5da3d;
+	border: 2px solid rgb(220, 111, 156);
 	border-radius: 3px;
 	outline: none;
 }
 
 input:focus {
 	background: #fff;
-	border-color: #5e97b0;
+	border-top: 2px solid rgb(220, 111, 156);
 	transition: border-color .4s, background-color .4s;
+}
+
+[type=checkbox]:checked + span:before {
+	content: '\2714';
+	position: absolute;
+	top: -5px;
+	left: 0;
 }
 
 input[type="checkbox"],

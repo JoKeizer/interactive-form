@@ -180,30 +180,25 @@ const isValidEmail = (input) => {
 
 
 // check if the credit card section is valid
-
 const isCreditCardValid = (input) => {
 
     if (selectCreditCard.selected === true) {
         document.querySelector('#error-creditcard').textContent = "13-16 Numbers only";
         return creditCardNumberRegex.test(input);
-
     }
 };
 
 const isZipValid = (input) => {
-
     if (selectCreditCard.selected === true) {
         return zipRegex.test(input);
     }
 };
 
 const isCvvValid = (input) => {
-
     if (selectCreditCard.selected === true) {
         return cvvRegex.test(input);
     }
 };
-
 
 
 // check if any checkbox is selected
@@ -267,7 +262,6 @@ function errorMessage (message, parent, addDivTo, IdName) {
     newDiv.textContent = message;
     parent.insertBefore(newDiv, addDivTo);
     newDiv.style.display = 'none';
-
 };
 
 
@@ -275,8 +269,8 @@ errorMessage("What is your name?", document.querySelector('fieldset'), nameInput
 errorMessage('Oh no? It\'s not a valid Email', document.querySelector('fieldset'), emailInput, 'error-email');
 errorMessage('What would you do for activity?', checkboxesList, document.querySelector('fieldset[class="activities"] label'), 'error-checkbox');
 errorMessage('13-16 Numbers only', document.querySelector('div[class="col-6 col"] '), creditCardNumberInput, 'error-creditcard');
-errorMessage('5 Numbers only', document.querySelector('div[class="col-3 col"] '), zipInput, 'error-zip');
-errorMessage('3 Numbers only', document.querySelector('div[class="col-3 col"] '), cvvInput, 'error-cvv');
+errorMessage('5 Numbers only', document.querySelectorAll('div[class="col-3 col"] ')[0], zipInput, 'error-zip');
+errorMessage('3 Numbers only', document.querySelectorAll('div[class="col-3 col"] ')[1], cvvInput, 'error-cvv');
 
 //function to create a Event listener and calls the validation function(s)
 function createListener(validator)  {
