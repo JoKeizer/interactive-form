@@ -45,6 +45,21 @@ form {
 	border-radius: 3px;
 }
 
+#error-name {
+	color: red;
+	font-size: 14px;
+}
+
+#error-email {
+	color: red;
+	font-size: 14px;
+}
+
+#error-checkbox {
+	color: red;
+	font-size: 14px;
+}
+
 fieldset,
 legend,
 button {
