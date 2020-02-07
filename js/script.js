@@ -131,7 +131,7 @@ const bitcoinElement = document.querySelector('#bitcoin');
 const selectPayment = document.querySelector('option[value="select method"]');
 const selectCreditCard = document.querySelector('option[value="credit card"]');
 selectPayment.style.display = "none";
-selectCreditCard.style.display = true;
+selectCreditCard.selected = true;
 payPalElement.style.display = "none";
 bitcoinElement.style.display = "none";
 
@@ -235,6 +235,7 @@ document.querySelector('button[type="submit"]').addEventListener('click', (event
         event.preventDefault();
         document.querySelector('#error-creditcard').textContent = "Cant't be blank, it should have 13-16 Numbers";
         showOrHideErrorMessage(true, creditCardNumberInput.previousElementSibling);
+
     }
     if (selectCreditCard.selected === true &&isZipValid(zipInput.value) === false) {
         event.preventDefault();
@@ -274,6 +275,7 @@ errorMessage('3 Numbers only', document.querySelectorAll('div[class="col-3 col"]
 
 //function to create a Event listener and calls the validation function(s)
 function createListener(validator)  {
+    console.log(validator);
     return e => {
         const text = e.target.value;
         const valid = validator(text);
