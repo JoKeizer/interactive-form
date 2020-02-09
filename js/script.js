@@ -33,7 +33,6 @@ const design = document.querySelector('#design');
 const color = document.getElementById('color');
 
 // Hide the colors
-
 for (let i = 0; i < color.children.length; i++) {
     color.children[i].style.display = 'none';
 }
@@ -104,7 +103,6 @@ checkboxesList.addEventListener('change', (e) => {
     for (let i = 0; i < checkboxes.length; i++) {
         //get the date and time on click event
         const checkboxType = checkboxes[i].getAttribute('data-day-and-time');
-
         //if the date and time are equal the event is disabled
         if (clickedTypeDate === checkboxType && clicked !== checkboxes[i]) {
             if (clicked.checked) {
@@ -114,7 +112,6 @@ checkboxesList.addEventListener('change', (e) => {
             }
         }
     }
-
 });
 
 
@@ -152,20 +149,20 @@ payment.addEventListener('change', (e) => {
     }
 });
 
+
+/*
+    Form Validation with validation expressions
+ */
+
 const nameInput = document.querySelector('#name');
 const emailInput = document.querySelector('#mail');
 const creditCardNumberInput = document.querySelector('#cc-num');
 const zipInput = document.querySelector('#zip');
 const cvvInput = document.querySelector('#cvv');
+const emailRegex = /^[^@]+@[^@.]+\.[a-z]+$/i;
 const creditCardNumberRegex = /^\d{13,16}$/;
 const zipRegex = /^\d{5}$/;
 const cvvRegex = /^\d{3}$/;
-/*
-    Form Validation with validation expressions
- */
-
-
-const emailRegex = /^[^@]+@[^@.]+\.[a-z]+$/i;
 
 
 // Can only contain letters a-z in lowercase
@@ -217,6 +214,7 @@ const checkboxSelected = () => {
     }
 };
 
+//addEventListener on Submit button click
 document.querySelector('button[type="submit"]').addEventListener('click', (event) => {
     if (isValidUsername(nameInput.value) === false) {
         event.preventDefault();
@@ -256,6 +254,8 @@ const showOrHideErrorMessage = (show, element) => {
     }
 };
 
+
+//errorMessage function create the error message on the parent div
 function errorMessage (message, parent, addDivTo, IdName) {
     const newDiv = document.createElement('div');
     newDiv.setAttribute('ID', IdName);
@@ -266,12 +266,14 @@ function errorMessage (message, parent, addDivTo, IdName) {
 };
 
 
+
+// errorMessages that has 4 arguments: message:string, parent selector, class selector and idName
 errorMessage("What is your name?", document.querySelector('fieldset'), nameInput, 'error-name');
 errorMessage('Oh no? It\'s not a valid Email', document.querySelector('fieldset'), emailInput, 'error-email');
 errorMessage('What would you do for activity?', checkboxesList, document.querySelector('fieldset[class="activities"] label'), 'error-checkbox');
-errorMessage('13-16 Numbers only', document.querySelector('div[class="col-6 col"] '), creditCardNumberInput, 'error-creditcard');
-errorMessage('5 Numbers only', document.querySelectorAll('div[class="col-3 col"] ')[0], zipInput, 'error-zip');
-errorMessage('3 Numbers only', document.querySelectorAll('div[class="col-3 col"] ')[1], cvvInput, 'error-cvv');
+errorMessage('Numbers only min 13 max 16 ', document.querySelector('div[class="col-6 col"] '), creditCardNumberInput, 'error-creditcard');
+errorMessage('Numbers only 5 ', document.querySelectorAll('div[class="col-3 col"] ')[0], zipInput, 'error-zip');
+errorMessage('Numbers only 3', document.querySelectorAll('div[class="col-3 col"] ')[1], cvvInput, 'error-cvv');
 
 //function to create a Event listener and calls the validation function(s)
 function createListener(validator)  {
@@ -285,7 +287,7 @@ function createListener(validator)  {
     };
 };
 
-
+//addEventListener for error messages
 nameInput.addEventListener("input", createListener(isValidUsername));
 emailInput.addEventListener("input", createListener(isValidEmail));
 creditCardNumberInput.addEventListener("input", createListener(isCreditCardValid));
