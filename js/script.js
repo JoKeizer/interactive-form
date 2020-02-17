@@ -32,10 +32,6 @@ function checkLabel(label) {
 const design = document.querySelector('#design');
 const color = document.getElementById('color');
 
-// Hide the colors
-for (let i = 0; i < color.children.length; i++) {
-    color.children[i].style.display = 'none';
-}
 
 design.addEventListener('change', (e) => {
     if (e.target.value === 'js puns') {
@@ -63,10 +59,11 @@ design.addEventListener('change', (e) => {
     }
     else {
         for (let i = 0; i < color.children.length; i++) {
-                color.children[i].style.display = 'block';
+            color.children[i].style.display = 'block';
         }
     }
 });
+
 
 const checkboxes = document.querySelectorAll('.activities input');
 const checkboxesList = document.querySelector('.activities');
