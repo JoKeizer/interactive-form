@@ -31,7 +31,11 @@ function checkLabel(label) {
  */
 const design = document.querySelector('#design');
 const color = document.getElementById('color');
+const tShirtColor = document.getElementById('colors-js-puns');
 
+if (design.value !== "js puns" || design.value !== "heart js") {
+    tShirtColor.hidden = true;
+}
 
 design.addEventListener('change', (e) => {
     if (e.target.value === 'js puns') {
@@ -40,9 +44,12 @@ design.addEventListener('change', (e) => {
             if (color.children[i].index <=3) {
                 color.children[0].style.display = 'none'; //first item Please Select a Theme
                 color.children[i].style.display = 'none';
+                tShirtColor.hidden = false;
+
 
             } else {
                 color.children[i].style.display = 'block';
+
             }
         }
 
@@ -52,15 +59,16 @@ design.addEventListener('change', (e) => {
             if (color.children[i].index >= 4) {
                 color.children[0].style.display = 'none';  //first item Please Select a Theme
                 color.children[i].style.display = 'none';
+                tShirtColor.hidden = false;
+
             } else {
                 color.children[i].style.display = 'block';
+
             }
         }
     }
     else {
-        for (let i = 0; i < color.children.length; i++) {
-            color.children[i].style.display = 'block';
-        }
+        tShirtColor.hidden = true;
     }
 });
 
